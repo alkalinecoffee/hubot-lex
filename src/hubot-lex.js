@@ -70,7 +70,8 @@ module.exports = (robot) => {
     }
 
     const message = match.message;
-    message.text = message.text.replace(/(@hubot|Hubot:) /i, "").trim();
+    var regex = new RegExp(`(@${robot.name}|${robot.name}:) `, 'i');
+    message.text = message.text.replace(regex, "").trim();
 
     var params = {
       botAlias: botAlias,
